@@ -85,3 +85,18 @@ class Solution:
             headB = headB.next
 
         return None
+    
+# Answer Time: O(n+m), Space: O(1)
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA or not headB:
+            return None
+        
+        a, b = headA, headB
+
+        while a != b:
+            a = a.next if a else headB
+            b = b.next if b else headA
+
+        return a
