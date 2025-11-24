@@ -62,3 +62,19 @@ class Solution:
             dPrice.append(discount.get(i, price))
         
         return dPrice
+    
+# Solution with just stacks
+
+class Solution:
+    def finalPrices(self, prices: List[int]) -> List[int]:
+
+        result = prices[:] # copy of prices
+        stack = []
+
+        for i in range(len(prices)):
+            while (stack and prices[i] <= prices[stack[-1]]):
+                t = stack.pop()
+                result[t] = prices[t] - prices[i]
+            stack.append(i)
+        
+        return result
