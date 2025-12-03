@@ -22,10 +22,6 @@
 
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        if numRows == 1:
-            return [[1]]
-
-        
         pt = [[0]*i for i in range(1, numRows+1)]
 
         for i in range(numRows):
