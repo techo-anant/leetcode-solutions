@@ -48,3 +48,28 @@ class Solution:
                     dp[i][j] = max(dp[i][j-1], dp[i-1][j])
         
         return dp[m][n]
+    
+
+# Space Optimized Solution Time: O(n*m), Space: O(m) [m > n]
+
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        
+        m, n = len(text1), len(text2)
+
+        if n > m:
+            text1, text2 = text2, text1
+            m, n = n, m
+        
+        dp = [0]*(m+1)
+
+        for ch in text2:
+            prev = 0
+            for i in range(1, m+1):
+                temp = dp[i]
+                if text1[i-1] == ch:
+                    dp[i] = 1 + prev
+                else:
+                    dp[i] = max(dp[i], dp[i-1])
+                prev = temp
+        return dp[m]
