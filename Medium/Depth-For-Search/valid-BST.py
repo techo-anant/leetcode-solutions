@@ -59,3 +59,22 @@ class Solution:
             return True
 
         return isBST( root, [])
+    
+# Another Approach:
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def isBST(root, min_val, max_val):
+            if not root:
+                return True
+            
+            # Current node must be within the valid range
+            if root.val <= min_val or root.val >= max_val:
+                return False
+            
+            # Left subtree: all values must be < root.val
+            # Right subtree: all values must be > root.val
+            return (isBST(root.left, min_val, root.val) and 
+                    isBST(root.right, root.val, max_val))
+        
+        return isBST(root, float('-inf'), float('inf'))
