@@ -37,7 +37,7 @@
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        m, n = len(grid), len(grid[0]))
+        m, n = len(grid), len(grid[0])
         directions = [ (0, 1), (0, -1), (1, 0), (-1, 0)]
         
         def markIsland( r, c ):
